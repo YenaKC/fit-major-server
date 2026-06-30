@@ -6,6 +6,7 @@ const cors = require("cors");
 const authRoutes = require("./routes/auth.routes");
 const productRoutes = require("./routes/product.routes");
 const cartRoutes = require("./routes/cart.routes");
+const orderRoutes = require("./routes/order.router");
 
 // Create Express App
 const app = express();
@@ -23,6 +24,7 @@ app.use(express.json());
 app.use("/auth", authRoutes);
 app.use("/products", productRoutes);
 app.use("/cart", cartRoutes);
+app.use("/orders", orderRoutes);
 
 app.get("/", (req, res) => {
     res.json({ message: "Fit Major API is running" });
