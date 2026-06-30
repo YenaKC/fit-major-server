@@ -70,4 +70,18 @@ router.get("/:orderId", isAuthenticated, async (req, res, next) => {
     }
 });
 
+// Update status after making an order
+// Reception of PUT
+router.put("/:orderId/status", isAuthenticated, async(req, res, next) => {
+    // Finding the order in MongoDB
+    const order = await Order.findById(req.params.orderId);
+
+    // Finding the order 
+    order.status = req.body.status;
+
+    await order.save();
+
+    res.json(order);
+});
+
 module.exports = router;
