@@ -1,5 +1,6 @@
 // After the payment in Stripe, order will be realised.
 const { Schema, model } = require("mongoose");
+const isAuthenticated = require("../middleware/isAuthenticated");
 
 const orderSchema = new Schema(
     {

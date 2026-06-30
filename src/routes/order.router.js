@@ -46,4 +46,28 @@ router.post("/", isAuthenticated, async (req, res, next) => {
     }
 });
 
+// Get all orders of logged-in user
+router.get("/", isAuthenticated, async (req, res, next) => {
+    try {
+        const orders = await Order.find({
+            user: req.payload._id
+        }).populate("items.product");
+
+        res.status(200).json(orders);
+    } catch (error) {
+        next(error);
+    }
+});
+
+// Get one order
+router.get("/:orderId", isAuthenticated, async (req, res, next) => {
+    try {
+        const order = await Order.findById(req.params.orderId).populate("items.product");
+
+        res.status(200).json(order);
+    } catch (error) {
+        next(error);
+    }
+});
+
 module.exports = router;
