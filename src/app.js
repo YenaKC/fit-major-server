@@ -11,6 +11,9 @@ const orderRoutes = require("./routes/order.router");
 // Create Express App
 const app = express();
 
+// Stripe
+const stripeRoutes = require("./routes/stripe.routes");
+
 // Middleware
 app.use(
     cors({
@@ -25,6 +28,7 @@ app.use("/auth", authRoutes);
 app.use("/products", productRoutes);
 app.use("/cart", cartRoutes);
 app.use("/orders", orderRoutes);
+app.use("/stripe", stripeRoutes);
 
 app.get("/", (req, res) => {
     res.json({ message: "Fit Major API is running" });

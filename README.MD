@@ -86,3 +86,25 @@ Protected routes require a JWT token in the Authorization header.
 
 ```http
 Authorization: Bearer <authToken>
+
+## Features
+- JWT Authentication
+- Product CRUD
+- Shopping >>Cart
+- Order Management
+- Stripe Checkout Integration
+
+## Tech Stack
+MongoDB
+Express
+Node.js
+JWT
+Stripe API
+
+## Demo Flow
+Register
+→ Login
+→ Add product to cart
+→ Create order
+→ Stripe Checkout
+→ Payment Success
