@@ -5,7 +5,6 @@ const router = require("express").Router(); // Create Express for auth
 const User = require("../models/User.model");
 // bcrypt
 const bcryptjs = require("bcryptjs");
-const { json } = require("express");
 // JWT
 const jwt = require("jsonwebtoken");
 const isAuthenticated = require("../middleware/isAuthenticated");
@@ -95,7 +94,7 @@ router.post("/login", async (req, res, next) => {
         const authToken = jwt.sign(
             payload,
             process.env.TOKEN_SECRET,
-            { expiresIn: "6h"}
+            { expiresIn: "24h"}
         );
 
         res.status(200).json({
